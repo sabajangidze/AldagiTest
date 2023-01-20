@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aldagi", "Aldagi\Aldagi.csproj", "{E30DD66A-ABE6-4F53-8C80-841057A337A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aldagi", "Aldagi\Aldagi.csproj", "{E30DD66A-ABE6-4F53-8C80-841057A337A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{C5A8A7C2-7FDF-496E-88BA-EB656C653E3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{C5A8A7C2-7FDF-496E-88BA-EB656C653E3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{B1574CBC-1D89-4185-874F-53547653C564}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{B1574CBC-1D89-4185-874F-53547653C564}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{EC363454-C64E-4916-BAC1-1F72A6EA675D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{D68BCD33-4575-4377-9F20-491E236696A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{EC363454-C64E-4916-BAC1-1F72A6EA675D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +33,6 @@ Global
 		{EC363454-C64E-4916-BAC1-1F72A6EA675D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC363454-C64E-4916-BAC1-1F72A6EA675D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC363454-C64E-4916-BAC1-1F72A6EA675D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D68BCD33-4575-4377-9F20-491E236696A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D68BCD33-4575-4377-9F20-491E236696A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D68BCD33-4575-4377-9F20-491E236696A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D68BCD33-4575-4377-9F20-491E236696A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

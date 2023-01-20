@@ -1,3 +1,8 @@
+using Domain.Entities;
+using Infrastructure;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
 namespace Aldagi
 {
     public class Program
@@ -10,6 +15,10 @@ namespace Aldagi
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionString"));
+            });
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -30,6 +39,8 @@ namespace Aldagi
             app.MapControllers();
 
             app.Run();
+
+            
         }
     }
 }

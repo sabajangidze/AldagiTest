@@ -11,11 +11,13 @@ namespace Domain.Entities
     {
         public Guid Id { get; set; }
 
-        public string FirstName { get; set; } = null!;
+        public string FirstName { get; set; }
 
-        public string LastName { get; set; } = null!;
+        public string LastName { get; set; }
 
-        public int PersonalId { get; set; } 
+        public string PersonalId { get; set; }
+
+        public string AccountNumber { get; set; }
 
         public bool IsEmployee { get; set; }
 
@@ -28,5 +30,13 @@ namespace Domain.Entities
         public DateTime? ModifiedAt { get; set; }
 
         public DateTime? DeletedAt { get; set; }
+
+        public virtual Scheme Scheme { get; set; }
+
+        public Guid SchemeId { get; set; }
+
+        public virtual Role Role { get; set; }
+
+        public Guid RoleId { get; set; }
     }
 }
