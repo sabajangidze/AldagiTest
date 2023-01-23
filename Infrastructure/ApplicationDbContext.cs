@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -21,27 +22,10 @@ namespace Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var schemes = modelBuilder.Entity<Scheme>();
-            var roles = modelBuilder.Entity<Role>();
-            var users = modelBuilder.Entity<User>();
-
-            schemes.Property(s => s.Name).IsRequired().HasMaxLength(50);
-            schemes.Property(s => s.CreatedAt).IsRequired();
-
-            roles.Property(r => r.Type).IsRequired().HasMaxLength(50);
-            roles.Property(r => r.CreatedAt).IsRequired();
-            roles.HasOne(r => r.User).WithOne(u => u.Role).HasForeignKey<User>(u => u.RoleId).IsRequired();
-
-            users.Property(u => u.FirstName).IsRequired().HasMaxLength(50);
-            users.Property(u => u.LastName).IsRequired().HasMaxLength(50);
-            users.Property(u => u.PersonalId).IsRequired().HasMaxLength(11);
-            users.Property(u => u.IsEmployee).IsRequired();
-            users.Property(u => u.IsTaxPayer).IsRequired();
-            users.Property(u => u.IsPensioPayer).IsRequired();
-            users.Property(u => u.CreatedAt).IsRequired();
-            users.HasOne(u => u.Scheme).WithMany(s => s.Users).HasForeignKey("SchemeId").IsRequired();
-
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new SchemeConfiguraion());
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
         }
     }
 }

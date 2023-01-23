@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class Role : IEntity<Guid>, IEntityAudit
+    public class Product : IEntity<Guid>, IEntityAudit
     {
         public Guid Id { get; set; }
 
-        public string Type { get; set; }
+        public string Name { get; set; }
 
-        public int Hierarchy { get; set; }
+        public double MonthlyPercent { get; set; }
+
+        public double QuarterPercent { get; set; }
 
         public DateTime CreatedAt { get; set; }
 
@@ -21,12 +23,10 @@ namespace Domain.Entities
 
         public DateTime? DeletedAt { get; set; }
 
-        public virtual User User { get; set; }
+        public virtual Scheme Scheme { get; set; }
 
-        public Guid UserId { get; set; }
+        public Guid SchemeId { get; set; }
 
-        public virtual Product Product { get; set; }
-
-        public Guid ProductId { get; set; }
+        public virtual ICollection<Role> Roles { get; set; }
     }
 }
