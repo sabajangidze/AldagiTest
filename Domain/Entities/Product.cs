@@ -1,4 +1,5 @@
 ﻿using Domain.Abstractions;
+using Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace Domain.Entities
 
         public double MonthlyPercent { get; set; }
 
-        public double QuarterPercent { get; set; }
+        public PercentType PercentType { get; set; }
 
         public DateTime CreatedAt { get; set; }
 
