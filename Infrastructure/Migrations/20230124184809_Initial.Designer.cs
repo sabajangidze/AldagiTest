@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230124063106_Initial")]
+    [Migration("20230124184809_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -40,19 +40,19 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<double>("MonthlyPercent")
-                        .HasColumnType("float");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<double>("QuarterPercent")
+                    b.Property<double>("Percent")
                         .HasColumnType("float");
 
                     b.Property<Guid>("SchemeId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

@@ -123,6 +123,12 @@ C:\Users\pc\Desktop\Aldagi\Aldagi\obj\Debug\net6.0\Aldagi.genruntimeconfig.cache
 C:\Users\pc\Desktop\Aldagi\Aldagi\obj\Debug\net6.0\ref\Aldagi.dll
 C:\Users\pc\Desktop\Aldagi\Aldagi\bin\Debug\net6.0\Application.dll
 C:\Users\pc\Desktop\Aldagi\Aldagi\bin\Debug\net6.0\Application.pdb
+C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\obj\Debug\net6.0\Aldagi.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\obj\Debug\net6.0\Aldagi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\obj\Debug\net6.0\Aldagi.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\obj\Debug\net6.0\Aldagi.AssemblyInfo.cs
+C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\obj\Debug\net6.0\Aldagi.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\obj\Debug\net6.0\Aldagi.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\bin\Debug\net6.0\appsettings.json
 C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\bin\Debug\net6.0\Aldagi.exe
@@ -195,13 +201,6 @@ C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\bin\Debug\net6.0\Infrastructure.d
 C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\bin\Debug\net6.0\Application.pdb
 C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\bin\Debug\net6.0\Infrastructure.pdb
 C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\bin\Debug\net6.0\Domain.pdb
-C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\obj\Debug\net6.0\Aldagi.csproj.AssemblyReference.cache
-C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\obj\Debug\net6.0\Aldagi.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\obj\Debug\net6.0\Aldagi.AssemblyInfoInputs.cache
-C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\obj\Debug\net6.0\Aldagi.AssemblyInfo.cs
-C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\obj\Debug\net6.0\Aldagi.csproj.CoreCompileInputs.cache
-C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\obj\Debug\net6.0\Aldagi.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\obj\Debug\net6.0\Aldagi.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\User\Desktop\Aldagi\AldagiTest\Aldagi\obj\Debug\net6.0\scopedcss\bundle\Aldagi.styles.css

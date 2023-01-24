@@ -16,8 +16,8 @@ namespace Infrastructure.Configuration
         {
             builder.Property(p => p.Name).IsRequired().HasMaxLength(50);
             builder.Property(p => p.CreatedAt).IsRequired();
-            builder.Property(p => p.QuarterPercent).IsRequired();
-            builder.Property(p => p.MonthlyPercent).IsRequired();
+            builder.Property(p => p.Percent).IsRequired();
+            builder.Property(p => p.Type).IsRequired();
             builder.HasOne(p => p.Scheme).WithMany(u => u.Products).HasForeignKey("SchemeId").IsRequired();
         }
     }

@@ -14,9 +14,9 @@ namespace Domain.Entities
 
         public string Name { get; set; }
 
-        public double MonthlyPercent { get; set; }
+        public double Percent { get; set; }
 
-        public PercentType PercentType { get; set; }
+        public PercentType Type { get; set; }
 
         public DateTime CreatedAt { get; set; }
 
