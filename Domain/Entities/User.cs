@@ -38,5 +38,7 @@ namespace Domain.Entities
         public virtual Role Role { get; set; }
 
         public Guid RoleId { get; set; }
+
+        public ICollection<Plan> Plans { get; set; }
     }
 }

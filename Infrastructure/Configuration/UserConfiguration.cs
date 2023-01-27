@@ -20,7 +20,7 @@ namespace Infrastructure.Configuration
             builder.Property(u => u.IsTaxPayer).IsRequired();
             builder.Property(u => u.IsPensioPayer).IsRequired();
             builder.Property(u => u.CreatedAt).IsRequired();
-            builder.HasOne(u => u.Scheme).WithMany(s => s.Users).HasForeignKey("SchemeId").IsRequired().OnDelete(DeleteBehavior.ClientSetNull);
+            builder.HasOne(u => u.Scheme).WithMany(s => s.Users).HasForeignKey(u => u.SchemeId).IsRequired().OnDelete(DeleteBehavior.ClientSetNull);
         }
     }
 }
