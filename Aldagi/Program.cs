@@ -1,5 +1,8 @@
+using Aldagi.IoC;
+using Domain.Abstractions;
 using Domain.Entities;
 using Infrastructure;
+using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -10,15 +13,13 @@ namespace Aldagi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            ContainersSetup.Setup(builder.Services, builder.Configuration);
 
             // Add services to the container.
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
-            {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionString"));
-            });
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 

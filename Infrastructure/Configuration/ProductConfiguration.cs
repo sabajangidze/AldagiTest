@@ -15,9 +15,6 @@ namespace Infrastructure.Configuration
         public void Configure(EntityTypeBuilder<Product> builder)
         {
             builder.Property(p => p.Name).IsRequired().HasMaxLength(50);
-            builder.Property(p => p.CreatedAt).IsRequired();
-            builder.Property(p => p.Percent).IsRequired();
-            builder.Property(p => p.Type).IsRequired();
             builder.HasOne(p => p.Scheme).WithMany(u => u.Products).HasForeignKey(p => p.SchemeId).IsRequired();
         }
     }

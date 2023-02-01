@@ -14,7 +14,6 @@ namespace Infrastructure.Configuration
         public void Configure(EntityTypeBuilder<Scheme> builder)
         {
             builder.Property(s => s.Name).IsRequired().HasMaxLength(50);
-            builder.Property(s => s.CreatedAt).IsRequired();
         }
     }
 }

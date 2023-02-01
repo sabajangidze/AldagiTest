@@ -1,10 +1,5 @@
 ﻿using Domain.Abstractions;
 using Domain.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
@@ -20,9 +15,13 @@ namespace Domain.Entities
 
         public DateTime? DeletedAt { get; set; }
 
-        public User User { get; set; }
+        public virtual User User { get; set; }
 
         public Guid UserId { get; set; }
+
+        public virtual Product Product { get; set; }
+
+        public Guid? ProductId { get; set; }
 
         public virtual IEnumerable<AnnualPlan> AnnualPlans { get; set; }
     }

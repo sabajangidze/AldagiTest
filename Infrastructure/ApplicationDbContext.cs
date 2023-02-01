@@ -24,6 +24,7 @@ namespace Infrastructure
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Plan> Plans { get; set; }
         public virtual DbSet<AnnualPlan> AnnualPlans { get; set; }
+        public virtual DbSet<Polis> Polises { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

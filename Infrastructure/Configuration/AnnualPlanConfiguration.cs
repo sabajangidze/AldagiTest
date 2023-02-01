@@ -14,8 +14,6 @@ namespace Infrastructure.Configuration
         public void Configure(EntityTypeBuilder<AnnualPlan> builder)
         {
             builder.Property(a => a.Month).HasMaxLength(20).IsRequired();
-            builder.Property(a => a.Year).IsRequired();
-            builder.Property(a => a.Value).IsRequired();
             builder.HasOne(a => a.Plan).WithMany(p => p.AnnualPlans).HasForeignKey(a => a.PlanId).IsRequired();
         }
     }
