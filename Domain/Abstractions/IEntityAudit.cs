@@ -1,11 +1,10 @@
-﻿namespace Domain.Abstractions
+﻿namespace Domain.Abstractions;
+
+public interface IEntityAudit
 {
-    public interface IEntityAudit
-    {
-        DateTime CreatedAt { get; set; }
+    DateTime CreatedAt { get; set; }
 
-        DateTime? ModifiedAt { get; set; }
+    DateTime? ModifiedAt { get; set; }
 
-        DateTime? DeletedAt { get; set; }
-    }
+    DateTime? DeletedAt { get; set; }
 }

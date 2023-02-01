@@ -1,7 +1,6 @@
-﻿namespace Domain.Abstractions
+﻿namespace Domain.Abstractions;
+
+public interface IEntity<T>
 {
-    public interface IEntity<T>
-    {
-        T Id { get; set; }
-    }
+    T Id { get; set; }
 }
