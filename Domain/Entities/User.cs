@@ -35,4 +35,6 @@ public class User : IEntity<Guid>, IEntityAudit
     public Guid RoleId { get; set; }
 
     public virtual ICollection<Plan> Plans { get; set; }
+
+    public virtual ICollection<UserPolis> UserPolises { get; set; }
 }

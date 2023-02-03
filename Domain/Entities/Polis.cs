@@ -8,27 +8,31 @@ public class Polis : IEntity<Guid>, IEntityAudit
 
     public string PolisNumber { get; set; }
 
+    public bool Status { get; set; }
+
     public DateTime FromDate { get; set; }
 
-    public DateTime EventDate { get;set; }
+    public DateTime? EventDate { get;set; }
 
-    public double CurrentPaid { get; set; } // Do we need nullable?
+    public decimal? CurrentPaid { get; set; }
 
-    public double AllPaid { get; set; }
+    public decimal? AllPaid { get; set; }
 
-    public double Payable { get; set; } // decimal for money
+    public decimal? Payable { get; set; } 
 
     public DateTime? CancellDate { get; set; }
 
     public bool IsLoss { get; set; }
 
-    public double LossCount { get; set; }
+    public decimal? LossCount { get; set; }
 
-    public double PaidLoss { get; set; }
+    public decimal? PaidLoss { get; set; }
 
     public DateTime CreatedAt { get; set; }
 
     public DateTime? ModifiedAt { get; set; }
 
     public DateTime? DeletedAt { get; set; }
+
+    public virtual ICollection<UserPolis> UserPolises { get; set; }
 }
