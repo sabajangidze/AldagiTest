@@ -8,7 +8,7 @@ public class PlanConfiguration : IEntityTypeConfiguration<Plan>
 {
     public void Configure(EntityTypeBuilder<Plan> builder)
     {
-        builder.Property(p => p.Client).IsRequired();
+        builder.Property(p => p.ClientType).IsRequired();
         builder.HasOne(p => p.User).WithMany(u => u.Plans).HasForeignKey(p => p.UserId).IsRequired();
         builder.HasOne(p => p.Product).WithMany(p => p.Plans).HasForeignKey(p => p.ProductId).OnDelete(DeleteBehavior.ClientSetNull);
     }

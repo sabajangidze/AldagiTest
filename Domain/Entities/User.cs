@@ -26,15 +26,11 @@ public class User : IEntity<Guid>, IEntityAudit
 
     public DateTime? DeletedAt { get; set; }
 
-    public virtual Scheme Scheme { get; set; }
-
-    public Guid SchemeId { get; set; }
-
     public virtual Role Role { get; set; }
 
     public Guid RoleId { get; set; }
 
     public virtual ICollection<Plan> Plans { get; set; }
-
-    public virtual ICollection<UserPolis> UserPolises { get; set; }
+    public virtual ICollection<UsersPolicies> UsersPolicies { get; set; }
+    public virtual ICollection<UsersSchemes> UsersSchemes { get; set; }
 }

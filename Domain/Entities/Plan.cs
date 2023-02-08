@@ -7,7 +7,7 @@ public class Plan : IEntity<Guid>, IEntityAudit
 {
     public Guid Id { get; set; }
 
-    public ClientType Client { get; set; }
+    public ClientType ClientType { get; set; }
 
     public DateTime CreatedAt { get; set; }
 

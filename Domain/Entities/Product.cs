@@ -24,6 +24,6 @@ public class Product : IEntity<Guid>, IEntityAudit
     public Guid SchemeId { get; set; }
 
     public virtual ICollection<Role> Roles { get; set; }
-
-    public virtual ICollection<Plan>? Plans { get; set; }
+    public virtual ICollection<Plan> Plans { get; set; }
+    public virtual ICollection<Policy> Policies { get; set; }
 }

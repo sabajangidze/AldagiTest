@@ -17,7 +17,8 @@ public class ApplicationDbContext : DbContext
     public virtual DbSet<Product> Products { get; set; }
     public virtual DbSet<Plan> Plans { get; set; }
     public virtual DbSet<AnnualPlan> AnnualPlans { get; set; }
-    public virtual DbSet<Polis> Polises { get; set; }
+    public virtual DbSet<Policy> Policies { get; set; }
+    public virtual DbSet<Client> Clients { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

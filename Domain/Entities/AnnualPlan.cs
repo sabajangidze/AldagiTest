@@ -10,7 +10,7 @@ public class AnnualPlan : IEntity<Guid>, IEntityAudit
 
     public int Year { get; set; }
 
-    public int Value { get; set; } // What type do we need? also size
+    public decimal Value { get; set; }
 
     public DateTime CreatedAt { get; set; }
 

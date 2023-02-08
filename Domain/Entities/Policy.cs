@@ -2,11 +2,11 @@
 
 namespace Domain.Entities;
 
-public class Polis : IEntity<Guid>, IEntityAudit
+public class Policy : IEntity<Guid>, IEntityAudit
 {
     public Guid Id { get; set; }
 
-    public string PolisNumber { get; set; }
+    public string PolicyNumber { get; set; }
 
     public bool Status { get; set; }
 
@@ -34,5 +34,14 @@ public class Polis : IEntity<Guid>, IEntityAudit
 
     public DateTime? DeletedAt { get; set; }
 
-    public virtual ICollection<UserPolis> UserPolises { get; set; }
+    public virtual Product Product { get; set; }
+
+    public Guid ProductId { get; set; }
+
+    public virtual Client Client { get; set; }
+
+    public Guid ClientId { get; set; }
+
+    public virtual ICollection<UsersPolicies> UsersPolicies { get; set; }
+    public virtual ICollection<PoliciesSchemes> PoliciesSchemes { get; set; }
 }
