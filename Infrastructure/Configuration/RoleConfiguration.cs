@@ -10,6 +10,6 @@ public class RoleConfiguration : IEntityTypeConfiguration<Role>
     {
         builder.Property(r => r.Type).IsRequired().HasMaxLength(50);
         builder.HasOne(r => r.User).WithOne(u => u.Role).HasForeignKey<User>(u => u.RoleId).IsRequired();
-        builder.HasOne(r => r.Product).WithMany(p => p.Roles).HasForeignKey(r => r.ProductId).IsRequired();
+        builder.HasOne(r => r.License).WithMany(p => p.Roles).HasForeignKey(r => r.LicenseId).IsRequired();
     }
 }

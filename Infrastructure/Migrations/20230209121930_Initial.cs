@@ -45,7 +45,7 @@ namespace Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Products",
+                name: "Licenses",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -59,9 +59,9 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.PrimaryKey("PK_Licenses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Schemes_SchemeId",
+                        name: "FK_Licenses_Schemes_SchemeId",
                         column: x => x.SchemeId,
                         principalTable: "Schemes",
                         principalColumn: "Id",
@@ -87,7 +87,7 @@ namespace Infrastructure.Migrations
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LicenseId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ClientId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -99,9 +99,9 @@ namespace Infrastructure.Migrations
                         principalTable: "Clients",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Policies_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
+                        name: "FK_Policies_Licenses_LicenseId",
+                        column: x => x.LicenseId,
+                        principalTable: "Licenses",
                         principalColumn: "Id");
                 });
 
@@ -116,15 +116,15 @@ namespace Infrastructure.Migrations
                     ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    LicenseId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Roles", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Roles_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
+                        name: "FK_Roles_Licenses_LicenseId",
+                        column: x => x.LicenseId,
+                        principalTable: "Licenses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -192,15 +192,15 @@ namespace Infrastructure.Migrations
                     ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    LicenseId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Plans", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Plans_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
+                        name: "FK_Plans_Licenses_LicenseId",
+                        column: x => x.LicenseId,
+                        principalTable: "Licenses",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Plans_Users_UserId",
@@ -288,9 +288,14 @@ namespace Infrastructure.Migrations
                 column: "PlanId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Plans_ProductId",
+                name: "IX_Licenses_SchemeId",
+                table: "Licenses",
+                column: "SchemeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Plans_LicenseId",
                 table: "Plans",
-                column: "ProductId");
+                column: "LicenseId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Plans_UserId",
@@ -303,9 +308,9 @@ namespace Infrastructure.Migrations
                 column: "ClientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Policies_ProductId",
+                name: "IX_Policies_LicenseId",
                 table: "Policies",
-                column: "ProductId");
+                column: "LicenseId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PoliciesSchemes_PolicyId",
@@ -318,14 +323,9 @@ namespace Infrastructure.Migrations
                 column: "SchemeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_SchemeId",
-                table: "Products",
-                column: "SchemeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Roles_ProductId",
+                name: "IX_Roles_LicenseId",
                 table: "Roles",
-                column: "ProductId");
+                column: "LicenseId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_RoleId",
@@ -385,7 +385,7 @@ namespace Infrastructure.Migrations
                 name: "Roles");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "Licenses");
 
             migrationBuilder.DropTable(
                 name: "Schemes");

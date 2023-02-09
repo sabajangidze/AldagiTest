@@ -3,7 +3,7 @@ using Domain.Enums;
 
 namespace Domain.Entities;
 
-public class Product : IEntity<Guid>, IEntityAudit
+public class License : IEntity<Guid>, IEntityAudit
 {
     public Guid Id { get; set; }
 
@@ -12,6 +12,10 @@ public class Product : IEntity<Guid>, IEntityAudit
     public double Percent { get; set; }
 
     public PercentType Type { get; set; }
+
+    public string CascoType { get; set; }
+
+    public string TravelProduct { get; set; }
 
     public DateTime CreatedAt { get; set; }
 

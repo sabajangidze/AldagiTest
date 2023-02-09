@@ -14,7 +14,7 @@ public class Scheme : IEntity<Guid>, IEntityAudit
 
     public DateTime? DeletedAt { get; set; }
 
-    public virtual ICollection<Product> Products { get; set; }
+    public virtual ICollection<License> Licenses { get; set; }
     public virtual ICollection<UsersSchemes> UsersSchemes { get; set; }
     public virtual ICollection<PoliciesSchemes> PoliciesSchemes { get; set; }
 }

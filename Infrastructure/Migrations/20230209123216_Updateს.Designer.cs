@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230208111309_Initial")]
-    partial class Initial
+    [Migration("20230209123216_Updateს")]
+    partial class Updateს
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -103,6 +103,51 @@ namespace Infrastructure.Migrations
                     b.ToTable("Clients");
                 });
 
+            modelBuilder.Entity("Domain.Entities.License", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CascoType")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<double>("Percent")
+                        .HasColumnType("float");
+
+                    b.Property<Guid>("SchemeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("TravelProduct")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SchemeId");
+
+                    b.ToTable("Licenses");
+                });
+
             modelBuilder.Entity("Domain.Entities.Plan", b =>
                 {
                     b.Property<Guid>("Id")
@@ -118,18 +163,18 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid?>("LicenseId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("ProductId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("LicenseId");
 
                     b.HasIndex("UserId");
 
@@ -192,6 +237,9 @@ namespace Infrastructure.Migrations
                     b.Property<bool>("IsLoss")
                         .HasColumnType("bit");
 
+                    b.Property<Guid>("LicenseId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<decimal?>("LossCount")
                         .HasPrecision(10, 2)
                         .HasColumnType("decimal(10,2)");
@@ -212,9 +260,6 @@ namespace Infrastructure.Migrations
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
@@ -222,45 +267,9 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("LicenseId");
 
                     b.ToTable("Policies");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Product", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ModifiedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<double>("Percent")
-                        .HasColumnType("float");
-
-                    b.Property<Guid>("SchemeId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SchemeId");
-
-                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Domain.Entities.Role", b =>
@@ -278,11 +287,11 @@ namespace Infrastructure.Migrations
                     b.Property<int>("Hierarchy")
                         .HasColumnType("int");
 
+                    b.Property<Guid>("LicenseId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -294,7 +303,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("LicenseId");
 
                     b.ToTable("Roles");
                 });
@@ -430,11 +439,22 @@ namespace Infrastructure.Migrations
                     b.Navigation("Plan");
                 });
 
+            modelBuilder.Entity("Domain.Entities.License", b =>
+                {
+                    b.HasOne("Domain.Entities.Scheme", "Scheme")
+                        .WithMany("Licenses")
+                        .HasForeignKey("SchemeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Scheme");
+                });
+
             modelBuilder.Entity("Domain.Entities.Plan", b =>
                 {
-                    b.HasOne("Domain.Entities.Product", "Product")
+                    b.HasOne("Domain.Entities.License", "License")
                         .WithMany("Plans")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("LicenseId");
 
                     b.HasOne("Domain.Entities.User", "User")
                         .WithMany("Plans")
@@ -442,7 +462,7 @@ namespace Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Product");
+                    b.Navigation("License");
 
                     b.Navigation("User");
                 });
@@ -473,36 +493,25 @@ namespace Infrastructure.Migrations
                         .HasForeignKey("ClientId")
                         .IsRequired();
 
-                    b.HasOne("Domain.Entities.Product", "Product")
+                    b.HasOne("Domain.Entities.License", "License")
                         .WithMany("Policies")
-                        .HasForeignKey("ProductId")
+                        .HasForeignKey("LicenseId")
                         .IsRequired();
 
                     b.Navigation("Client");
 
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Product", b =>
-                {
-                    b.HasOne("Domain.Entities.Scheme", "Scheme")
-                        .WithMany("Products")
-                        .HasForeignKey("SchemeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Scheme");
+                    b.Navigation("License");
                 });
 
             modelBuilder.Entity("Domain.Entities.Role", b =>
                 {
-                    b.HasOne("Domain.Entities.Product", "Product")
+                    b.HasOne("Domain.Entities.License", "License")
                         .WithMany("Roles")
-                        .HasForeignKey("ProductId")
+                        .HasForeignKey("LicenseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Product");
+                    b.Navigation("License");
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>
@@ -557,6 +566,15 @@ namespace Infrastructure.Migrations
                     b.Navigation("Policies");
                 });
 
+            modelBuilder.Entity("Domain.Entities.License", b =>
+                {
+                    b.Navigation("Plans");
+
+                    b.Navigation("Policies");
+
+                    b.Navigation("Roles");
+                });
+
             modelBuilder.Entity("Domain.Entities.Plan", b =>
                 {
                     b.Navigation("AnnualPlans");
@@ -569,15 +587,6 @@ namespace Infrastructure.Migrations
                     b.Navigation("UsersPolicies");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Product", b =>
-                {
-                    b.Navigation("Plans");
-
-                    b.Navigation("Policies");
-
-                    b.Navigation("Roles");
-                });
-
             modelBuilder.Entity("Domain.Entities.Role", b =>
                 {
                     b.Navigation("User");
@@ -585,9 +594,9 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.Scheme", b =>
                 {
-                    b.Navigation("PoliciesSchemes");
+                    b.Navigation("Licenses");
 
-                    b.Navigation("Products");
+                    b.Navigation("PoliciesSchemes");
 
                     b.Navigation("UsersSchemes");
                 });

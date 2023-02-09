@@ -20,7 +20,7 @@ public class Role : IEntity<Guid>, IEntityAudit
 
     public Guid UserId { get; set; }
 
-    public virtual Product Product { get; set; }
+    public virtual License License { get; set; }
 
-    public Guid ProductId { get; set; }
+    public Guid LicenseId { get; set; }
 }

@@ -14,7 +14,7 @@ public class PolicyConfiguration : IEntityTypeConfiguration<Policy>
         builder.Property(p => p.Payable).HasPrecision(10, 2);
         builder.Property(p => p.LossCount).HasPrecision(10, 2);
         builder.Property(p => p.PaidLoss).HasPrecision(10, 2);
-        builder.HasOne(p => p.Product).WithMany(p => p.Policies).HasForeignKey(p => p.ProductId).IsRequired().OnDelete(DeleteBehavior.ClientSetNull);
+        builder.HasOne(p => p.License).WithMany(p => p.Policies).HasForeignKey(p => p.LicenseId).IsRequired().OnDelete(DeleteBehavior.ClientSetNull);
         builder.HasOne(p => p.Client).WithMany(p => p.Policies).HasForeignKey(p => p.ClientId).IsRequired().OnDelete(DeleteBehavior.ClientSetNull);
     }
 }
