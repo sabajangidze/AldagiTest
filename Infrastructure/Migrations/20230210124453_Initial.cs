@@ -30,6 +30,29 @@ namespace Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PolicyDetails",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PaymentDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    OldPolicyNumber = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
+                    CurrentPaid = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: true),
+                    CancellDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LossCount = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: true),
+                    PaidLoss = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: true),
+                    Rateprojected = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: true),
+                    ArchiveStatus = table.Column<bool>(type: "bit", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    PolicyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PolicyDetails", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Schemes",
                 columns: table => new
                 {
@@ -52,6 +75,8 @@ namespace Infrastructure.Migrations
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Percent = table.Column<double>(type: "float", nullable: false),
                     Type = table.Column<int>(type: "int", nullable: false),
+                    CascoType = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
+                    TravelProduct = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -76,19 +101,29 @@ namespace Infrastructure.Migrations
                     PolicyNumber = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false),
                     FromDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EventDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CurrentPaid = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: true),
-                    AllPaid = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: true),
-                    Payable = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: true),
-                    CancellDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ToDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EventDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    SchedulePay = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
+                    Payable = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
                     IsLoss = table.Column<bool>(type: "bit", nullable: false),
-                    LossCount = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: true),
-                    PaidLoss = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: true),
+                    PremiumCurrency = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    LimitCurrency = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    CurName = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    SumInsured = table.Column<decimal>(type: "decimal(10,2)", maxLength: 25, precision: 10, scale: 2, nullable: false),
+                    Intallment = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    EventOrderNo = table.Column<int>(type: "int", nullable: false),
+                    PayType = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    Comission = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    Source = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Segment = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    SellSegment = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    SellSpot = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LicenseId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ClientId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ClientId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PolicyDetailId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -103,6 +138,12 @@ namespace Infrastructure.Migrations
                         column: x => x.LicenseId,
                         principalTable: "Licenses",
                         principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Policies_PolicyDetails_PolicyDetailId",
+                        column: x => x.PolicyDetailId,
+                        principalTable: "PolicyDetails",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -313,6 +354,12 @@ namespace Infrastructure.Migrations
                 column: "LicenseId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Policies_PolicyDetailId",
+                table: "Policies",
+                column: "PolicyDetailId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PoliciesSchemes_PolicyId",
                 table: "PoliciesSchemes",
                 column: "PolicyId");
@@ -380,6 +427,9 @@ namespace Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Clients");
+
+            migrationBuilder.DropTable(
+                name: "PolicyDetails");
 
             migrationBuilder.DropTable(
                 name: "Roles");

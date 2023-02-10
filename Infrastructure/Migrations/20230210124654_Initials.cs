@@ -5,21 +5,20 @@
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class Updateს : Migration
+    public partial class Initials : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "TravelProduct",
-                table: "Licenses",
-                type: "nvarchar(50)",
-                maxLength: 50,
+                name: "Source",
+                table: "Policies",
+                type: "nvarchar(30)",
+                maxLength: 30,
                 nullable: false,
                 defaultValue: "",
                 oldClrType: typeof(string),
-                oldType: "nvarchar(50)",
-                oldMaxLength: 50,
+                oldType: "nvarchar(max)",
                 oldNullable: true);
         }
 
@@ -27,14 +26,13 @@ namespace Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "TravelProduct",
-                table: "Licenses",
-                type: "nvarchar(50)",
-                maxLength: 50,
+                name: "Source",
+                table: "Policies",
+                type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(50)",
-                oldMaxLength: 50);
+                oldType: "nvarchar(30)",
+                oldMaxLength: 30);
         }
     }
 }
