@@ -10,15 +10,11 @@ public class Policy : IEntity<Guid>, IEntityAudit
 
     public bool Status { get; set; }
 
+    public DateTime? PaymentDate { get; set; }
+
     public DateTime FromDate { get; set; }
 
-    public DateTime ToDate { get; set; }
-
     public DateTime EventDate { get;set; }
-
-    public decimal SchedulePay { get; set; }
-
-    public decimal Payable { get; set; } 
 
     public bool IsLoss { get; set; }
 
@@ -38,11 +34,7 @@ public class Policy : IEntity<Guid>, IEntityAudit
 
     public string Comission { get; set; }
 
-    public string Source { get; set; }
-
     public string Segment { get; set; }
-
-    public string SellSegment { get; set; }
 
     public string SellSpot { get; set; }
 

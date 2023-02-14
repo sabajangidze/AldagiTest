@@ -15,6 +15,10 @@ public class PolicyDetailConfiguration : IEntityTypeConfiguration<PolicyDetail>
     {
         builder.Property(p => p.CurrentPaid).HasPrecision(10, 2);
         builder.Property(p => p.OldPolicyNumber).HasMaxLength(25);
+        builder.Property(p => p.SchedulePay).HasPrecision(10, 2);
+        builder.Property(p => p.SellSegment).HasMaxLength(30).IsRequired();
+        builder.Property(p => p.PaymentLeft).HasPrecision(10, 2);
+        builder.Property(p => p.Source).HasMaxLength(30).IsRequired();
         builder.Property(p => p.LossCount).HasPrecision(10, 2);
         builder.Property(p => p.PaidLoss).HasPrecision(10, 2);
         builder.Property(p => p.Rateprojected).HasPrecision(10, 2);

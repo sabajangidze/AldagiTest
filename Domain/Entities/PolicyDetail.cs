@@ -6,7 +6,15 @@ public class PolicyDetail : IEntity<Guid>, IEntityAudit
 {
     public Guid Id { get; set; }
 
-    public DateTime? PaymentDate { get; set; }
+    public DateTime ToDate { get; set; }
+
+    public decimal SchedulePay { get; set; }
+
+    public decimal PaymentLeft { get; set; }
+
+    public string Source { get; set; }
+
+    public string SellSegment { get; set; }
 
     public string OldPolicyNumber { get; set; }
 

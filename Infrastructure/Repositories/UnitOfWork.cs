@@ -1,6 +1,7 @@
 ﻿using Domain.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Infrastructure.Repositories;
 
@@ -52,6 +53,13 @@ public class UnitOfWork : IUnitOfWork
     public IQueryable<T> Query<T>() where T : class, IEntity<Guid>, IEntityAudit
     {
         return _context.Set<T>();
+    }
+
+    public async Task<T> GetById<T>(Guid id) where T : class, IEntity<Guid>, IEntityAudit
+    {
+        var value = _context.Set<T>();
+        var entity = await value.FirstOrDefaultAsync(x => x.Id == id);
+        return entity;
     }
 
     public void Commit()

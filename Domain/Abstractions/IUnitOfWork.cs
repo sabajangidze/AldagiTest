@@ -18,6 +18,8 @@ public interface IUnitOfWork : IDisposable
 
     IQueryable<T> Query<T>() where T : class, IEntity<Guid>, IEntityAudit;
 
+    Task<T> GetById<T>(Guid id) where T : class, IEntity<Guid>, IEntityAudit;
+
     void Commit();
 
     Task CommitAsync();
