@@ -1,13 +1,16 @@
 ﻿using Aldagi.Filters;
+using Application.Services.Policies;
+using Application.Services.Policies;
 using Domain.Abstractions;
 using Infrastructure;
+using Infrastructure.Data;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace Aldagi.IoC
 {
-    public static class ContainersSetup 
+    public static class Containers 
     {
         public static void Setup(IServiceCollection services, IConfiguration configuration)
         {
@@ -17,6 +20,7 @@ namespace Aldagi.IoC
 
         private static void AddServices(IServiceCollection services)
         {
+            services.AddScoped<PolicyService>();
         }
 
         private static void AddDbContext(IServiceCollection services, IConfiguration configuration)

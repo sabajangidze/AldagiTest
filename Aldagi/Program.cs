@@ -1,10 +1,4 @@
 using Aldagi.IoC;
-using Domain.Abstractions;
-using Domain.Entities;
-using Infrastructure;
-using Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace Aldagi;
 
@@ -13,11 +7,16 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        ContainersSetup.Setup(builder.Services, builder.Configuration);
+        Containers.Setup(builder.Services, builder.Configuration);
 
         // Add services to the container.
 
-        builder.Services.AddControllers();
+        builder.Services.AddControllers()
+            .AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
+            
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
         builder.Services.AddEndpointsApiExplorer();
@@ -30,17 +29,15 @@ public class Program
         {
             app.UseSwagger();
             app.UseSwaggerUI();
+            DevelopContainers.Setup(app);
         }
 
         app.UseHttpsRedirection();
 
         app.UseAuthorization();
 
-
         app.MapControllers();
 
         app.Run();
-
-        
     }
 }
