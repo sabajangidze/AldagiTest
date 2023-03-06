@@ -18,8 +18,8 @@ public class PolicyController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Get([FromBody] GetPolicyRequest request)
     {
-        var result = await _policyService.GetPolicies(request);
+        //var result = await _policyService.GetPolicies(request);
 
-        return Ok(result);
+        return Ok();
     }
 }

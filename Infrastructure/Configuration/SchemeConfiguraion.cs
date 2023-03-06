@@ -9,5 +9,6 @@ public class SchemeConfiguraion : IEntityTypeConfiguration<Scheme>
     public void Configure(EntityTypeBuilder<Scheme> builder)
     {
         builder.Property(s => s.Name).IsRequired().HasMaxLength(50);
+        builder.HasMany(s => s.Users).WithMany(u => u.Schemes);
     }
 }

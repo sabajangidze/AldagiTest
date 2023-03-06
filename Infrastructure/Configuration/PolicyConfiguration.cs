@@ -19,7 +19,9 @@ public class PolicyConfiguration : IEntityTypeConfiguration<Policy>
         builder.Property(p => p.Segment).HasMaxLength(30).IsRequired();
         builder.Property(p => p.SellSpot).HasMaxLength(35).IsRequired();
         builder.Property(p => p.SumInsured).HasMaxLength(25).IsRequired();
-        builder.HasOne(p => p.License).WithMany(p => p.Policies).HasForeignKey(p => p.LicenseId).IsRequired().OnDelete(DeleteBehavior.ClientSetNull);
-        builder.HasOne(p => p.Client).WithMany(p => p.Policies).HasForeignKey(p => p.ClientId).IsRequired().OnDelete(DeleteBehavior.ClientSetNull);
+        builder.HasOne(p => p.License).WithMany(p => p.Policies).IsRequired().OnDelete(DeleteBehavior.ClientSetNull);
+        builder.HasOne(p => p.Client).WithMany(p => p.Policies).IsRequired().OnDelete(DeleteBehavior.ClientSetNull);
+        builder.HasMany(p => p.Users).WithMany(u => u.Policies);
+        builder.HasMany(p => p.Schemes).WithMany(s => s.Policies);
     }
 }

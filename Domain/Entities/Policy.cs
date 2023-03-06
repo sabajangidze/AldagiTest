@@ -46,16 +46,12 @@ public class Policy : IEntity<Guid>, IEntityAudit
 
     public virtual License License { get; set; }
 
-    public Guid LicenseId { get; set; }
-
     public virtual Client Client { get; set; }
-
-    public Guid ClientId { get; set; }
 
     public virtual PolicyDetail PolicyDetail { get; set; }
 
     public Guid PolicyDetailId { get; set; }
 
-    public virtual ICollection<UsersPolicies> UsersPolicies { get; set; }
-    public virtual ICollection<PoliciesSchemes> PoliciesSchemes { get; set; }
+    public virtual ICollection<User> Users { get; set; }
+    public virtual ICollection<Scheme> Schemes { get; set; }
 }

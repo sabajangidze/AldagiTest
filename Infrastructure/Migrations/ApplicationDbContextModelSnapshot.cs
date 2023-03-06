@@ -178,27 +178,6 @@ namespace Infrastructure.Migrations
                     b.ToTable("Plans");
                 });
 
-            modelBuilder.Entity("Domain.Entities.PoliciesSchemes", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("PolicyId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("SchemeId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PolicyId");
-
-                    b.HasIndex("SchemeId");
-
-                    b.ToTable("PoliciesSchemes");
-                });
-
             modelBuilder.Entity("Domain.Entities.Policy", b =>
                 {
                     b.Property<Guid>("Id")
@@ -487,46 +466,49 @@ namespace Infrastructure.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Domain.Entities.UsersPolicies", b =>
+            modelBuilder.Entity("PolicyScheme", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("PoliciesId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("PolicyId")
+                    b.Property<Guid>("SchemesId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.HasKey("PoliciesId", "SchemesId");
 
-                    b.HasKey("Id");
+                    b.HasIndex("SchemesId");
 
-                    b.HasIndex("PolicyId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UsersPolicies");
+                    b.ToTable("PolicyScheme");
                 });
 
-            modelBuilder.Entity("Domain.Entities.UsersSchemes", b =>
+            modelBuilder.Entity("PolicyUser", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("PoliciesId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("SchemeId")
+                    b.Property<Guid>("UsersId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UserId")
+                    b.HasKey("PoliciesId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("PolicyUser");
+                });
+
+            modelBuilder.Entity("SchemeUser", b =>
+                {
+                    b.Property<Guid>("SchemesId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("Id");
+                    b.Property<Guid>("UsersId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.HasIndex("SchemeId");
+                    b.HasKey("SchemesId", "UsersId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UsersId");
 
-                    b.ToTable("UsersSchemes");
+                    b.ToTable("SchemeUser");
                 });
 
             modelBuilder.Entity("Domain.Entities.AnnualPlan", b =>
@@ -566,25 +548,6 @@ namespace Infrastructure.Migrations
                     b.Navigation("License");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Domain.Entities.PoliciesSchemes", b =>
-                {
-                    b.HasOne("Domain.Entities.Policy", "Policy")
-                        .WithMany("PoliciesSchemes")
-                        .HasForeignKey("PolicyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Entities.Scheme", "Scheme")
-                        .WithMany("PoliciesSchemes")
-                        .HasForeignKey("SchemeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Policy");
-
-                    b.Navigation("Scheme");
                 });
 
             modelBuilder.Entity("Domain.Entities.Policy", b =>
@@ -634,40 +597,49 @@ namespace Infrastructure.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("Domain.Entities.UsersPolicies", b =>
+            modelBuilder.Entity("PolicyScheme", b =>
                 {
-                    b.HasOne("Domain.Entities.Policy", "Policy")
-                        .WithMany("UsersPolicies")
-                        .HasForeignKey("PolicyId")
+                    b.HasOne("Domain.Entities.Policy", null)
+                        .WithMany()
+                        .HasForeignKey("PoliciesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entities.User", "User")
-                        .WithMany("UsersPolicies")
-                        .HasForeignKey("UserId")
+                    b.HasOne("Domain.Entities.Scheme", null)
+                        .WithMany()
+                        .HasForeignKey("SchemesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Policy");
-
-                    b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Domain.Entities.UsersSchemes", b =>
+            modelBuilder.Entity("PolicyUser", b =>
                 {
-                    b.HasOne("Domain.Entities.Scheme", "Scheme")
-                        .WithMany("UsersSchemes")
-                        .HasForeignKey("SchemeId")
+                    b.HasOne("Domain.Entities.Policy", null)
+                        .WithMany()
+                        .HasForeignKey("PoliciesId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entities.User", "User")
-                        .WithMany("UsersSchemes")
-                        .HasForeignKey("UserId")
+                    b.HasOne("Domain.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SchemeUser", b =>
+                {
+                    b.HasOne("Domain.Entities.Scheme", null)
+                        .WithMany()
+                        .HasForeignKey("SchemesId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Scheme");
-
-                    b.Navigation("User");
+                    b.HasOne("Domain.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Entities.Client", b =>
@@ -689,13 +661,6 @@ namespace Infrastructure.Migrations
                     b.Navigation("AnnualPlans");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Policy", b =>
-                {
-                    b.Navigation("PoliciesSchemes");
-
-                    b.Navigation("UsersPolicies");
-                });
-
             modelBuilder.Entity("Domain.Entities.PolicyDetail", b =>
                 {
                     b.Navigation("Policy");
@@ -709,19 +674,11 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.Scheme", b =>
                 {
                     b.Navigation("Licenses");
-
-                    b.Navigation("PoliciesSchemes");
-
-                    b.Navigation("UsersSchemes");
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>
                 {
                     b.Navigation("Plans");
-
-                    b.Navigation("UsersPolicies");
-
-                    b.Navigation("UsersSchemes");
                 });
 #pragma warning restore 612, 618
         }

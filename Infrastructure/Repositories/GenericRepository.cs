@@ -27,8 +27,7 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEnt
 
     public async Task InsertAsync(TEntity entity)
     {
-        var test = 
-        await _dbSet.AddAsync(entity);
+        var test = await _dbSet.AddAsync(entity);
     }
 
     public void Update(TEntity entity)

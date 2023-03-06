@@ -101,9 +101,7 @@ namespace Infrastructure.Data
                     Segment = "TBC",
                     SellSpot = "Georgia",
                     License = licenses[0],
-                    LicenseId = licenses[0].Id,
                     Client = clients[0],
-                    ClientId = clients[0].Id,
                     PolicyDetail = policyDetails[0],
                     PolicyDetailId = Guid.NewGuid()
                 },
