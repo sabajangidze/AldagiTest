@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5F5HSX1srUePMpAENl/aqce7msxzJN6DVEs0SSvP8zLM8iNpCDKFI9Kq/rJeeGg5i7mnonXWTesaD8PigRuRqw==",
+  "dgSpecHash": "s0pbACVjt8mShY5PGnmQLFHJrkVewCwRSurpEoWoGCxZz+iYcjmFhEIyF9C0gQBvsCWsI6S7acJSrgc3LcPdTg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pc\\Desktop\\Aldagi\\Application\\Application.csproj",
+  "projectFilePath": "C:\\Users\\pc\\Desktop\\New folder (16)\\AldagiTest\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pc\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",

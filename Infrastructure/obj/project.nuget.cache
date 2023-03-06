@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "npaK8kjr/JZ3gNGxmTImsHwuNcB/+hTVVcH1VU6VmegKRi/gv0VU4+IB4n2QmyJZ49TDyYo60U0TJNcqxD/q8Q==",
+  "dgSpecHash": "CEeevFPHZJLakMjPud8WqUY69Eyr/z0nghQ3gzIZAEOFM611Li0xEsP67Eqq9sQqpTFnGgkel4iZA01oWsmU9Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pc\\Desktop\\Aldagi\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\pc\\Desktop\\New folder (16)\\AldagiTest\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pc\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

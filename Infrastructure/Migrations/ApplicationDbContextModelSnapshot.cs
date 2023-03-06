@@ -591,7 +591,6 @@ namespace Infrastructure.Migrations
                     b.HasOne("Domain.Entities.Role", "Role")
                         .WithOne("User")
                         .HasForeignKey("Domain.Entities.User", "RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Role");
