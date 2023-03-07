@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "s0pbACVjt8mShY5PGnmQLFHJrkVewCwRSurpEoWoGCxZz+iYcjmFhEIyF9C0gQBvsCWsI6S7acJSrgc3LcPdTg==",
+  "dgSpecHash": "ry9gHRUKFJpzJwaKlGaweTSUKFBwRdkceGawKNWjyDdLZQCPXLVfQoWSW5p2vWmSUm27vyPAdndnrEIj00JbHw==",
   "success": true,
   "projectFilePath": "C:\\Users\\pc\\Desktop\\New folder (16)\\AldagiTest\\Application\\Application.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\pc\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\microsoft.aspnetcore.mvc.abstractions\\2.2.0\\microsoft.aspnetcore.mvc.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\microsoft.aspnetcore.routing.abstractions\\2.2.0\\microsoft.aspnetcore.routing.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\pc\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\microsoft.extensions.primitives\\2.2.0\\microsoft.extensions.primitives.2.2.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",

@@ -16,9 +16,9 @@ public class PolicyController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> Get([FromBody] GetPolicyRequest request)
+    public async Task<IActionResult> Get()
     {
-        //var result = await _policyService.GetPolicies(request);
+        var result = await _policyService.GetPolicies();
 
         return Ok();
     }

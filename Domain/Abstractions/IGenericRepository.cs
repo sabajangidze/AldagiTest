@@ -1,11 +1,10 @@
 ﻿namespace Domain.Abstractions;
 
-public interface IGenericRepository<TEntity> where TEntity : class, IEntity<Guid>, IEntityAudit
+public interface IGenericRepository<TEntity> where TEntity : class
 {
-    IQueryable<TEntity> GetAll();
-    Task<TEntity?> GetByIdAsync(Guid id);
-    Task InsertAsync(TEntity entity);
-    void Update(TEntity entity);
-    void Delete(TEntity entity);
-    Task SaveAsync();
+    Task<IEnumerable<T>> Query<T>(string table);
+
+    Task<T> GetById<T>(string table, Guid id);
+
+    Task<IEnumerable<T>> CustomQuery<T>(string query);
 }

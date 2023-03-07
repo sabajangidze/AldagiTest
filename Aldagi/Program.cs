@@ -1,4 +1,6 @@
 using Aldagi.IoC;
+using Application;
+using Infrastructure;
 
 namespace Aldagi;
 
@@ -7,7 +9,12 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        Containers.Setup(builder.Services, builder.Configuration);
+        {
+            builder.Services
+                .AddPresentation(builder.Configuration)
+                .AddApplication()
+                .AddInfrastructure();
+        }
 
         // Add services to the container.
 

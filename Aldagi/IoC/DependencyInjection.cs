@@ -10,20 +10,22 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace Aldagi.IoC
 {
-    public static class Containers 
+    public static class DependencyInjection 
     {
-        public static void Setup(IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddPresentation(this IServiceCollection services, IConfiguration configuration)
         {
-            AddServices(services);
-            AddDbContext(services, configuration);
+            services.AddServices();
+            services.AddDbContext(configuration);
+
+            return services;
         }
 
-        private static void AddServices(IServiceCollection services)
+        private static void AddServices(this IServiceCollection services)
         {
             services.AddScoped<PolicyService>();
         }
 
-        private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
+        private static void AddDbContext(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
             {

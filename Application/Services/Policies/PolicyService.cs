@@ -7,21 +7,19 @@ namespace Application.Services.Policies;
 public class PolicyService
 {
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IGenericRepository<Policy> _genericRepository;
 
-    public PolicyService(IUnitOfWork unitOfWork)
+    public PolicyService(IUnitOfWork unitOfWork, IGenericRepository<Policy> genericRepository)
     {
         _unitOfWork= unitOfWork;
-    }  
+        _genericRepository= genericRepository;
+    }
 
-    //public async Task<IEnumerable<Policy>> GetPolicies(GetPolicyRequest request)
-    //{
-    //    var policies = GetQuery();
+    public async Task<IEnumerable<Policy>> GetPolicies()
+    {
+        return await _genericRepository.Query<Policy>("Policies");
+    }
 
-    //    var response = _mapper.Map<GetPolicyResponse>(policies);
-
-    //    return response;
-    //}
-    
     //public async Task<Policy> GetPolicy(Guid id)
     //{
     //    var policies = await _unitOfWork.GetById(id);

@@ -1,50 +1,52 @@
-﻿using Domain.Abstractions;
+﻿using Dapper;
+using Domain.Abstractions;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 
 namespace Infrastructure.Repositories;
 
-public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class, IEntity<Guid>,IEntityAudit
+public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
 {
-    private readonly ApplicationDbContext _context;
-    private readonly DbSet<TEntity> _dbSet;
+    private readonly DapperContext _context;
 
-    public GenericRepository(ApplicationDbContext context)
+    public GenericRepository(DapperContext context)
     {
         _context = context;
-        _dbSet = _context.Set<TEntity>();
     }
 
-    public IQueryable<TEntity> GetAll()
+    public async Task<IEnumerable<T>> Query<T>(string table)
     {
-        return  _dbSet;
+        var query = $"SELECT * FROM {table}";
+
+        using (var connection = _context.CreateConnection())
+        {
+            var results = await connection.QueryAsync<T>(query);
+
+            return results.ToList();
+        }
     }
 
-    public async Task<TEntity?> GetByIdAsync(Guid id)
+    public async Task<T> GetById<T>(string table, Guid id)
     {
-        return await _dbSet.FirstOrDefaultAsync(a => a.Id.Equals(id));
+        var query = $"SELECT * FROM {table} WHERE Id = @Id";
+
+        using (var connection = _context.CreateConnection())
+        {
+            var result = await connection.QueryFirstOrDefaultAsync<T>(query, new { id });
+
+            return result;
+        }
     }
 
-    public async Task InsertAsync(TEntity entity)
+    public async Task<IEnumerable<T>> CustomQuery<T>(string query)
     {
-        var test = await _dbSet.AddAsync(entity);
-    }
+        using (var connection = _context.CreateConnection())
+        {
+            var results = await connection.QueryAsync<T>(query);
 
-    public void Update(TEntity entity)
-    {
-        //_dbSet.Attach(obj);
-        //_context.Entry(obj).State= EntityState.Modified;
-        _dbSet.Update(entity);
-    }
-
-    public void Delete(TEntity entity)
-    {
-        entity.DeletedAt = DateTime.UtcNow;
-        _dbSet.Update(entity);
-    }
-
-    public async Task SaveAsync()
-    {
-        await _context.SaveChangesAsync();
+            return results.ToList();
+        }
     }
 }

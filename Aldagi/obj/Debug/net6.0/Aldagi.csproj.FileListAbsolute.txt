@@ -315,3 +315,4 @@ C:\Users\pc\Desktop\New folder (16)\AldagiTest\Aldagi\obj\Debug\net6.0\refint\Al
 C:\Users\pc\Desktop\New folder (16)\AldagiTest\Aldagi\obj\Debug\net6.0\Aldagi.pdb
 C:\Users\pc\Desktop\New folder (16)\AldagiTest\Aldagi\obj\Debug\net6.0\Aldagi.genruntimeconfig.cache
 C:\Users\pc\Desktop\New folder (16)\AldagiTest\Aldagi\obj\Debug\net6.0\ref\Aldagi.dll
+C:\Users\pc\Desktop\New folder (16)\AldagiTest\Aldagi\bin\Debug\net6.0\Dapper.dll

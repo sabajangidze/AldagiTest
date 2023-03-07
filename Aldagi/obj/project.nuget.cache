@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "FwVTesmtPn36mP4HIk65T7JslF232kCZJnspEovGQs1E2X1JmSO9Gthc3VG4zEKK3xH43PBZBGzFmJFJMByLMg==",
+  "dgSpecHash": "cioPAfA2RxfLxpBA2HBqLh4SRh1kz6y0v9SCVg9GgfZJ7G/XtAISAENrwCBBqbRG5bm5JYXHUh5Dux+UG086Fg==",
   "success": true,
   "projectFilePath": "C:\\Users\\pc\\Desktop\\New folder (16)\\AldagiTest\\Aldagi\\Aldagi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pc\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\castle.core\\5.1.0\\castle.core.5.1.0.nupkg.sha512",
+    "C:\\Users\\pc\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
